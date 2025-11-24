@@ -32,9 +32,8 @@ public class FileUploadService {
 	}
 
 	public String uploadFile(MultipartFile file, String folder) throws IOException {
-
 		String uploadDIR = "uploads";
-		
+
 		Path uploadPath = Paths.get(uploadDIR);
 
 		if (!Files.exists(uploadPath)) {
@@ -46,7 +45,5 @@ public class FileUploadService {
 		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.asMap("folder", folder));
 
 		return (String) uploadResult.get("secure_url");
-
-//			
 	}
 }

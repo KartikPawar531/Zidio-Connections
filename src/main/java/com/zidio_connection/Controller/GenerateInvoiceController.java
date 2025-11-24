@@ -14,7 +14,7 @@ import com.zidio_connection.Service.GenerateInvoiceService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/invoice")
+@RequestMapping("/api/invoice")
 @RequiredArgsConstructor
 public class GenerateInvoiceController {
 

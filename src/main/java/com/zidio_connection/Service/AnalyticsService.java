@@ -14,18 +14,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AnalyticsService {
 
-	public UserStatusDTO fetchUserStatus() {
-
+	public UserStatusDTO fetchUserStatus() 
+	{
 		UserStatusDTO userStatus = new UserStatusDTO();
 		userStatus.setTotalJobseekers(1000);
 		userStatus.setTotalRecruiters(500);
 		userStatus.setBlockedUsers(50);
-
 		return userStatus;
 	}
 
-	public JobStatusDTO fetchJobStatus() {
-
+	public JobStatusDTO fetchJobStatus() 
+	{
 		JobStatusDTO jobStatus = new JobStatusDTO();
 		jobStatus.setTotalJobs(10000);
 		jobStatus.setFullTimes(5000);
@@ -33,24 +32,22 @@ public class AnalyticsService {
 		jobStatus.setContractual(500);
 		jobStatus.setPartTime(500);
 		jobStatus.setFreelance(500);
-
 		return jobStatus;
 	}
 
-	public ApplicationStatusDTO fetchApplicationStatus() {
-
+	public ApplicationStatusDTO fetchApplicationStatus() 
+	{
 		ApplicationStatusDTO applications = new ApplicationStatusDTO();
 		applications.setTotalJobApplications(1000);
 		applications.setShortlisted(750);
 		applications.setRejected(100);
 		applications.setPendingApplications(100);
 		applications.setInterviewProcess(100);
-
 		return applications;
 	}
 
-	public CourseStatusDTO fetchCourseStatus() {
-
+	public CourseStatusDTO fetchCourseStatus() 
+	{
 		CourseStatusDTO dto = new CourseStatusDTO();
 		dto.setTotalCourses(50);
 		dto.setActiveCourses(30);
@@ -58,15 +55,14 @@ public class AnalyticsService {
 		return dto;
 	}
 	
-   public SubscriptionStatusDTO fetchSubsritionStatus() {
-	   
-	   SubscriptionStatusDTO sub = new SubscriptionStatusDTO();
-	   sub.setTotalPayments(250);
+   public SubscriptionStatusDTO fetchSubsritionStatus() 
+   {   
+	   	SubscriptionStatusDTO sub = new SubscriptionStatusDTO();
+	   	sub.setTotalPayments(250);
 		sub.setPaidUsers(200);
 		sub.setActivePlans(180);
 		sub.setTotalRevenue(10000);
-		sub.setAverageRevenuePerUser(sub.getTotalRevenue()/sub.getPaidUsers());
-		
+		sub.setAverageRevenuePerUser(sub.getTotalRevenue()/sub.getPaidUsers());	
 		return sub;
 	}  
 }

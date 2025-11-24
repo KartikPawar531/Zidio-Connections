@@ -1,9 +1,8 @@
 package com.zidio_connection.DTO;
-
+// This DTO is used for REgister
 import com.zidio_connection.Enum.Role;
 
 import lombok.*;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

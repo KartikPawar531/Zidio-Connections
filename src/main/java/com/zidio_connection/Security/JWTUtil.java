@@ -13,23 +13,23 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JWTUtil {
 
 	private final String jwtSecret = "secretKey";
-	private final long jwtExpiration = 86400000;
+	private final long jwtExpiration = 86400000L;
 
+//	Generate Token
 	public String generateToken(Authentication authentication) {
-
 		String userName = authentication.getName();
 		Date now = new Date();
 		Date expiry = new Date(now.getTime() + jwtExpiration);
 
 		return Jwts.builder().setSubject(userName).setIssuedAt(now).setExpiration(expiry)
-				.signWith(SignatureAlgorithm.HS256, jwtSecret).compact();
+				.signWith(SignatureAlgorithm.ES512, jwtSecret).compact();
 	}
 
 	public String getUserNameFromToken(String token) {
-		return Jwts.parserBuilder().setSigningKey(jwtSecret.getBytes()).build().parseClaimsJws(token).getBody()
-				.getSubject();
+		return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
 	}
 
+//	Validate Token
 	public boolean validateToken(String token) {
 		try {
 			Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
@@ -38,4 +38,18 @@ public class JWTUtil {
 			return false;
 		}
 	}
+	
+//	 Check token expiration
+	public boolean isTokenExpired(String token) {
+        return getExpirationDateFromToken(token).before(new Date());
+    }
+	
+//   Get expiration date from token
+	 private Date getExpirationDateFromToken(String token) {
+	        return Jwts.parser()
+	                .setSigningKey(jwtSecret)
+	                .parseClaimsJws(token)
+	                .getBody()
+	                .getExpiration();
+	    }
 }

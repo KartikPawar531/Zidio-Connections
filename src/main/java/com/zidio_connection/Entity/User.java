@@ -1,15 +1,19 @@
 package com.zidio_connection.Entity;
 
+import java.time.LocalDateTime;
+
 import com.zidio_connection.Enum.Role;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.*;;
 
 @Entity
 @Table(name="users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 @Builder
 
 public class User {
@@ -23,5 +27,8 @@ public class User {
 	private String userEmail;
 	private String password;
 	private Role role;
+	private String resetToken;
+	private LocalDateTime resetTokenExpire;
 	private boolean active = true;
+	
 }

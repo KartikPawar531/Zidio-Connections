@@ -12,7 +12,7 @@ import com.zidio_connection.Entity.ChatSupport;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/support")
+@RequestMapping("/api/support")
 @RequiredArgsConstructor
 public class ChatSupportController {
 
@@ -22,5 +22,4 @@ public class ChatSupportController {
 		support.setTimeStamp(LocalDateTime.now());
 		return support;
 	}
-	
 }

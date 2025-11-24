@@ -21,6 +21,6 @@ public class Application {
 	private String jobseekerId;
 	private Long jobId;
 	private String recruiterId;
-	private LocalDateTime apllicationDate;
-	private ApplicationStatus status;
+	private LocalDateTime applicationDate;
+	private ApplicationStatus status;	
 }

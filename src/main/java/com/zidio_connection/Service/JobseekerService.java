@@ -11,11 +11,11 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class JobseekerService{
+public class JobseekerService {
 
 	@Autowired
 	private JobseekerRepository jobseekerRepo;
-	
+
 	public Jobseeker createJobseekerProfile(Long userID, JobseekerDTO dto) {
 		Jobseeker jobseek = new Jobseeker();
 		jobseek.setUserId(userID);
@@ -29,8 +29,8 @@ public class JobseekerService{
 		jobseek.setCertificateJpg(dto.getCertificateJpg());
 		return jobseekerRepo.save(jobseek);
 	}
-	
+
 	public Jobseeker getJobseekerProfile(Long userId) {
-		return jobseekerRepo.findByuserId(userId).orElseThrow(()-> new RuntimeException("Jobseeker Not Found"));
+		return jobseekerRepo.findByuserId(userId).orElseThrow(() -> new RuntimeException("Jobseeker Not Found"));
 	}
 }

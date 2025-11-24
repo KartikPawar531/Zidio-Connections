@@ -20,8 +20,8 @@ public class CourseService {
 	@Autowired
 	private CourseRepository courseRepo;
 
-	public CourseDTO addCourse(CourseDTO dto) {
-
+	public CourseDTO addCourse(CourseDTO dto) 
+	{
 		Course course = new Course();
 		course.setCourseTitle(dto.getCourseTitle());
 		course.setCourseDescription(dto.getCourseDescription());
@@ -31,32 +31,31 @@ public class CourseService {
 		course.setActive(true);
 
 		courseRepo.save(course);
-
 		dto.setId(course.getId());
 		dto.setAdminId(course.getAdminId());
 		dto.setActive(course.isActive());
-
 		return dto;
 	}
 
-	public List<CourseDTO> getAllActiveCourses() {
+	public List<CourseDTO> getAllActiveCourses() 
+	{
 		return courseRepo.findByActiveTrue().stream().map(c -> {
 			CourseDTO dto = new CourseDTO();
-
+			
 			dto.setId(c.getId());
 			dto.setCourseTitle(c.getCourseTitle());
 			dto.setCourseDescription(c.getCourseDescription());
 			dto.setCourseCatogory(c.getCourseCatogory());
 			dto.setAdminId(c.getAdminId());
 			dto.setActive(c.isActive());
-
+			
 			return dto;
 		}).collect(Collectors.toList());
 	}
 	
-	public void deActiveCourses(Long id) {
+	public void deActiveCourses(Long id) 
+	{
 		Course course = courseRepo.findById(id).orElseThrow(()-> new RuntimeException("Course not found"));
-		
 		course.setActive(false);
 		courseRepo.save(course);
 	}	

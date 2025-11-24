@@ -22,7 +22,7 @@ public class AdminActionService {
 	public AdminActionLog perforanceAction(AdminActionDTO dto) {
 		AdminActionLog admin = new AdminActionLog();
 		admin.setAdminId(dto.getAdminId());
-		admin.setTargetUserID(dto.getTargetUSerId());
+		admin.setTargetUserID(dto.getTargetUSerID());
 		admin.setAction(dto.getAction());
 		admin.setTimeStamp(LocalDateTime.now());
 		return adminActionRepo.save(admin);
@@ -33,6 +33,6 @@ public class AdminActionService {
 	}
 	
 	public List<AdminActionLog>getActionByUser(String targetUserId){
-		return adminActionRepo.findByTargetUserID( targetUserId);
+		return adminActionRepo.findByTargetUserID(targetUserId);
 	}
 }

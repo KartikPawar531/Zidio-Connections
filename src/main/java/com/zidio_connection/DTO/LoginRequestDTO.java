@@ -2,6 +2,8 @@ package com.zidio_connection.DTO;
 
 import lombok.*;
 
+// this DTO is used For Login
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

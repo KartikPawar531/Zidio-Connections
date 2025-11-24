@@ -1,10 +1,8 @@
 package com.zidio_connection.Entity;
 
 import java.time.LocalDateTime;
-
 import com.zidio_connection.Enum.PaymentStatus;
 import com.zidio_connection.Enum.PaymentType;
-
 import jakarta.persistence.*;
 import lombok.*;
 

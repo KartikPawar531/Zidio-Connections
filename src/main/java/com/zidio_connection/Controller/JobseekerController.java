@@ -16,7 +16,7 @@ import com.zidio_connection.Service.JobseekerService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/jobseekers")
+@RequestMapping("/api/jobseekers")
 @RequiredArgsConstructor
 public class JobseekerController {
 

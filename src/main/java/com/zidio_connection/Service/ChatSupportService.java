@@ -11,7 +11,5 @@ public class ChatSupportService {
  
 	public void logcoonection(String message) {
 		System.out.println("Websocket log:"+message);
-	}
-	
-	
+	}	
 }

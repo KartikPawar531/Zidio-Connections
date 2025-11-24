@@ -16,7 +16,7 @@ import com.zidio_connection.Service.AnalyticsService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/dashboard")
+@RequestMapping("/api/dashboard")
 @RequiredArgsConstructor
 public class AnalyticsController {
 

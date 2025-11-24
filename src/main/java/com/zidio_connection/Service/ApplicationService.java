@@ -11,6 +11,7 @@ import com.zidio_connection.Entity.Application;
 import com.zidio_connection.Enum.ApplicationStatus;
 import com.zidio_connection.Repository.ApplicationRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -20,22 +21,23 @@ public class ApplicationService {
 	@Autowired
 	private ApplicationRepository appRepo;
 	
-	public Application apply(String jobssekerId,ApplicationDTO dto) {
+	@Transactional
+	public Application apply(String jobsekerId,ApplicationDTO dto) {
 		Application app = new Application();
-		app.setJobseekerId(jobssekerId);
+		app.setJobseekerId(jobsekerId);
 		app.setRecruiterId(dto.getRecruiterId());
 		app.setJobId(dto.getJobId());
-		app.setApllicationDate(LocalDateTime.now());
+		app.setApplicationDate(LocalDateTime.now());
 		app.setStatus(dto.getStatus());
 		return appRepo.save(app);
 	}
 	
-	public List<Application>getByJobseekerID(String jobseekerID){
-		return appRepo.findByJobseekerId(jobseekerID);
+	public List<Application>getByJobseekerID(String jobSeekerID){
+		return appRepo.findByJobseekerId(jobSeekerID);
 	}
 	
-	public List<Application>getByRecruiterId(String recuiterId){
-		return appRepo.findByRecruiterId(recuiterId);
+	public List<Application>getByRecruiterId(String recruiterId){
+		return appRepo.findByRecruiterId(recruiterId);
 	}
 	
 	public List<Application>getByJobId(Long jobId){
@@ -43,8 +45,8 @@ public class ApplicationService {
 	}
 	
 	public Application updateApplicationStatus(Long id,  ApplicationStatus status) {
-		Application app = new Application();
-		appRepo.findById(id).orElseThrow(() -> new RuntimeException("Application not found"));
+//		Application app = new Application();
+		Application app = appRepo.findById(id).orElseThrow(() -> new RuntimeException("Application not found"));
 		app.setStatus(status);
 		return appRepo.save(app);	
 	}

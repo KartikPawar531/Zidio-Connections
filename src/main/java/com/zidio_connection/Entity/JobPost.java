@@ -1,18 +1,12 @@
 package com.zidio_connection.Entity;
 
 import java.time.LocalDateTime;
-
 import com.zidio_connection.Enum.JobType;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name="JobPosts")
+@Table(name="jobPosts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

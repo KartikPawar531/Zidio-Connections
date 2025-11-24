@@ -18,7 +18,7 @@ public class JobPostService {
 
 	@Autowired
 	private JobPostRepository jobPostRepo;
-	
+
 	public JobPost createJob(String recruiterId, JobPostDTO dto) {
 		JobPost job = new JobPost();
 		job.setRecruiterId(recruiterId);
@@ -31,32 +31,32 @@ public class JobPostService {
 		job.setDeadlineDate(dto.getDeadlineDate());
 		return jobPostRepo.save(job);
 	}
-	
-	public List<JobPost>getAllJob(){
+
+	public List<JobPost> getAllJob() {
 		return jobPostRepo.findAll();
 	}
-	
-	public List<JobPost>getJobByRecruiter(String recruiterId){
+
+	public List<JobPost> getJobByRecruiter(String recruiterId) {
 		return jobPostRepo.findByRecruiterId(recruiterId);
 	}
-	
-	public List<JobPost>getJobByJobType(JobType jobType){
+
+	public List<JobPost> getJobByJobType(JobType jobType) {
 		return jobPostRepo.findByJobType(jobType);
 	}
-	
-	public List<JobPost>getJobByJobTitle(String jobTitle){
+
+	public List<JobPost> getJobByJobTitle(String jobTitle) {
 		return jobPostRepo.findByJobTitle(jobTitle);
 	}
-	
-	public List<JobPost>searchJobByJobLocation(String jobLocation){
+
+	public List<JobPost> searchJobByJobLocation(String jobLocation) {
 		return jobPostRepo.findByJobLocation(jobLocation);
 	}
-	
-	public List<JobPost>searchJobByCompanyName(String companyName){
+
+	public List<JobPost> searchJobByCompanyName(String companyName) {
 		return jobPostRepo.findByCompanyName(companyName);
 	}
-	
+
 	public JobPost searchJobByJobId(Long id) {
-		return jobPostRepo.findById(id).orElseThrow(()-> new RuntimeException("Job Not Found"));
+		return jobPostRepo.findById(id).orElseThrow(() -> new RuntimeException("Job Not Found"));
 	}
 }

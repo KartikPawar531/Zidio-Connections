@@ -13,7 +13,7 @@ import com.zidio_connection.Service.CourseService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/courses")
+@RequestMapping("/api/courses")
 @RequiredArgsConstructor
 public class CourseController {
 

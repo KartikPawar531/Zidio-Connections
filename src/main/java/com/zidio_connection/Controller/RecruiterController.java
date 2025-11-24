@@ -28,9 +28,8 @@ public class RecruiterController {
 		return ResponseEntity.ok(recruiterService.getRecruiterProfile(userId));
 	}
 
-//	@PutMapping("/recruiterProfile/{userId}")
-//	public ResponseEntity<Recruiter>updateProfile(Long userId, RecruiterDTO dto){
-//		return ResponseEntity.ok(recruiterService.Update(userId, dto));
-//	}
-
+	@PutMapping("/recruiterProfile/{userId}")
+	public ResponseEntity<Recruiter>updateProfile(Long userId, RecruiterDTO dto){
+		return ResponseEntity.ok(recruiterService.Update(userId, dto));
+	}
 }

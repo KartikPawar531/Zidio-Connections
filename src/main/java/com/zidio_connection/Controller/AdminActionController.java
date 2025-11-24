@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AdminActionController {
 
-	@Autowired
+//	@Autowired
 	private AdminActionService adminService;
 
 	@PostMapping("/action")

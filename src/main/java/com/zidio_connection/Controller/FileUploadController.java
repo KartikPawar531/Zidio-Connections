@@ -13,7 +13,7 @@ import com.zidio_connection.Service.FileUploadService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/upload")
+@RequestMapping("/api/upload")
 @RequiredArgsConstructor
 public class FileUploadController {
 

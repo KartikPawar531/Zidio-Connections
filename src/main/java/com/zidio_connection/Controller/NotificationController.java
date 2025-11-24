@@ -12,7 +12,7 @@ import com.zidio_connection.Service.EmailService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/notification")
+@RequestMapping("/api/notification")
 @RequiredArgsConstructor
 public class NotificationController {
 
