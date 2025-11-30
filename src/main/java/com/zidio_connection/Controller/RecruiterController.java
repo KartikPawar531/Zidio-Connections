@@ -15,8 +15,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RecruiterController {
 
-	@Autowired
-	private RecruiterService recruiterService;
+//	@Autowired
+	private final RecruiterService recruiterService;
 
 	@PostMapping("/profile/{userId}")
 	public ResponseEntity<Recruiter> createorUpdate(@PathVariable Long userId, @RequestBody RecruiterDTO dto) {
@@ -29,7 +29,7 @@ public class RecruiterController {
 	}
 
 	@PutMapping("/recruiterProfile/{userId}")
-	public ResponseEntity<Recruiter>updateProfile(Long userId, RecruiterDTO dto){
+	public ResponseEntity<Recruiter>updateProfile(@PathVariable Long userId,@RequestBody RecruiterDTO dto){
 		return ResponseEntity.ok(recruiterService.Update(userId, dto));
 	}
 }

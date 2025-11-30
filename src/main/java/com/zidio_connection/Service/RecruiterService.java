@@ -13,8 +13,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RecruiterService {
 
-	@Autowired
-	private RecruiterRepository recruiterRepo;
+//	@Autowired
+	private final RecruiterRepository recruiterRepo;
 
 	public Recruiter createOrUpdateRecruiterProfile(Long userId, RecruiterDTO dto) {
 		Recruiter recruiter = new Recruiter();

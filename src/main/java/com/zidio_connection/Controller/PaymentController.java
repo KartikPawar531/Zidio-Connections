@@ -2,7 +2,6 @@ package com.zidio_connection.Controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,14 +25,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PaymentController {
 
-	@Autowired
-	private PaymentService payService;
+	private final PaymentService payService;
 
-	@Autowired
-	private SubPlanRepository subPlanRepo;
+	private final SubPlanRepository subPlanRepo;
 
-	@Autowired
-	private PaymentRepository payRepo;
+	private final PaymentRepository payRepo;
 
 	@PostMapping("/process")
 	public ResponseEntity<PaymentResponseDTO> process(@RequestBody PaymentRequestDTO dto) {

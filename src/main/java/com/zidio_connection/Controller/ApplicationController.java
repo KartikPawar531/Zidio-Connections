@@ -25,8 +25,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ApplicationController {
 
-	@Autowired
-	private ApplicationService appService;
+//	@Autowired
+	private final ApplicationService appService;
 	
 	@PostMapping("/apply/{jobseekerId}")
 	public ResponseEntity<Application>appply(@PathVariable String jobseekerId,@RequestBody ApplicationDTO dto){

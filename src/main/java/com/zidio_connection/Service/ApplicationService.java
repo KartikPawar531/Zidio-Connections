@@ -18,8 +18,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ApplicationService {
 
-	@Autowired
-	private ApplicationRepository appRepo;
+//	@Autowired
+	private final ApplicationRepository appRepo;
 	
 	@Transactional
 	public Application apply(String jobsekerId,ApplicationDTO dto) {

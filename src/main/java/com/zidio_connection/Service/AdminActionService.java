@@ -16,8 +16,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AdminActionService {
 
-	@Autowired
-	private AdminActionRepository adminActionRepo;
+//	@Autowired
+	private final AdminActionRepository adminActionRepo;
 	
 	public AdminActionLog perforanceAction(AdminActionDTO dto) {
 		AdminActionLog admin = new AdminActionLog();

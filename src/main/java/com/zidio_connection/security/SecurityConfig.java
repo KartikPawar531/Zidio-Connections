@@ -1,4 +1,4 @@
-package com.zidio_connection.Security;
+package com.zidio_connection.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,18 +27,32 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
+        		.formLogin(form -> form.disable())   
+        		.httpBasic(basic -> basic.disable())   
                 .authorizeHttpRequests(
                         auth -> auth
-                                .requestMatchers("/api/auth/**",
+                        .requestMatchers(
+                        		"/",
+                        		"/css/**",
+                        	    "/error",
+                                "/static/**"
+                            ).permitAll()
+                                .requestMatchers(
+                                        "/api/auth/**",
                                         "/api/jobseekers/**",
                                         "/api/recruiters/**",
                                         "/api/jobPost/**",
+                                        "/api/courses/**",
                                         "/api/applications/**",
                                         "/api/admins/**",
                                         "/api/notification/**",
                                         "/api/upload/**",
-                                        "/api/dashboard/**")
-                                .permitAll().anyRequest().authenticated())
+                                        "/api/payment/**",
+                                        "/api/invoice/**",
+                                        "/ws/**",
+                                        "/api/dashboard/**"
+                                    ).permitAll()
+                                .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 		return http.build();
 	}

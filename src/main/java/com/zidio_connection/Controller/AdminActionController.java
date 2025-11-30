@@ -18,10 +18,10 @@ import lombok.RequiredArgsConstructor;
 public class AdminActionController {
 
 //	@Autowired
-	private AdminActionService adminService;
+	private final AdminActionService adminService;
 
 	@PostMapping("/action")
-	public ResponseEntity<AdminActionLog> perform(@RequestBody AdminActionDTO dto) {
+	public ResponseEntity<AdminActionLog>perform(@RequestBody AdminActionDTO dto) {
 		return ResponseEntity.ok(adminService.perforanceAction(dto));
 	}
 

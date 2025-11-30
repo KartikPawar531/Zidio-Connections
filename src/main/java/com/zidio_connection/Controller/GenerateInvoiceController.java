@@ -1,6 +1,5 @@
 package com.zidio_connection.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +17,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class GenerateInvoiceController {
 
-	@Autowired
-	private GenerateInvoiceService generateInvoice;
+	private final GenerateInvoiceService generateInvoice;
 
-	@Autowired
-	private PaymentRepository payRepo;
+	private final PaymentRepository payRepo;
 
-	@GetMapping("/invoice/{paymentId}")
+	@GetMapping("/{paymentId}")
 	public ResponseEntity<byte[]> downloadInvoice(@PathVariable Long paymentId) {
 		Payment pay = payRepo.findById(paymentId).orElseThrow(() -> new RuntimeException("Payment not found"));
 

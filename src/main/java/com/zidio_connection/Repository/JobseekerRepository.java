@@ -10,5 +10,5 @@ import com.zidio_connection.Entity.Jobseeker;
 @Repository
 public interface JobseekerRepository extends JpaRepository<Jobseeker, Long> {
 	
-	Optional<Jobseeker> findByuserId(Long userId);
+	Optional<Jobseeker> findByUserId(Long userId);
 }

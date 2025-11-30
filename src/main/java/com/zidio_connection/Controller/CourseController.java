@@ -2,12 +2,10 @@ package com.zidio_connection.Controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.zidio_connection.DTO.CourseDTO;
-import com.zidio_connection.Entity.Course;
 import com.zidio_connection.Service.CourseService;
 
 import lombok.RequiredArgsConstructor;
@@ -17,11 +15,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CourseController {
 
-	@Autowired
-	private CourseService courseService;
+	private final CourseService courseService;
 	
 	@PostMapping("/add/{adminId}")
-	public ResponseEntity<CourseDTO>addCourse(@RequestBody CourseDTO dto){
+	public ResponseEntity<CourseDTO>addCourse(@PathVariable Long adminId,@RequestBody CourseDTO dto){
+		dto.setAdminId(adminId);
 		return ResponseEntity.ok(courseService.addCourse(dto));
 	}
 	

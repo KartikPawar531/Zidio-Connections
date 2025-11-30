@@ -2,7 +2,6 @@ package com.zidio_connection.Controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.zidio_connection.DTO.JobPostDTO;
@@ -16,8 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class JobPostController {
 
-	@Autowired
-	private JobPostService jobPostService;
+	private final JobPostService jobPostService;
 	
 	@PostMapping("/post/{recruiterId}")
 	public ResponseEntity<JobPost>PostJob(@PathVariable String recruiterId, @RequestBody JobPostDTO dto){
@@ -34,17 +32,17 @@ public class JobPostController {
 		return ResponseEntity.ok(jobPostService.getJobByRecruiter(recruiterId));
 	}
 	
-	@GetMapping("/search/{jobTitle}")
+	@GetMapping("/search/title/{jobTitle}")
 	public ResponseEntity<List<JobPost>>getByJobTitle(@PathVariable String jobTitle){
 		return ResponseEntity.ok(jobPostService.getJobByJobTitle(jobTitle));
 	}
 	
-	@GetMapping("/search/{jobLocation}")
+	@GetMapping("/search/location/{jobLocation}")
 	public ResponseEntity<List<JobPost>>getByJobLocation(@PathVariable String jobLocation){
 		return ResponseEntity.ok(jobPostService.searchJobByJobLocation(jobLocation));
 	}
 	
-	@GetMapping("/search/{companyName}")
+	@GetMapping("/search/company/{companyName}")
 	public ResponseEntity<List<JobPost>>getByCompanyName(@PathVariable String companyName){
 		return ResponseEntity.ok(jobPostService.searchJobByCompanyName(companyName));
 	}

@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/upload")
 @RequiredArgsConstructor
+
 public class FileUploadController {
 
 	@Autowired

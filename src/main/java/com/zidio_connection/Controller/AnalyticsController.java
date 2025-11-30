@@ -20,8 +20,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AnalyticsController {
 
-	@Autowired
-	private AnalyticsService analyticService;
+//	@Autowired
+	private final AnalyticsService analyticService;
 	
 	@GetMapping("/users")
 	public ResponseEntity<UserStatusDTO>userStatus(){

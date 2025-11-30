@@ -1,6 +1,5 @@
 package com.zidio_connection.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,16 +19,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class JobseekerController {
 
-	@Autowired
-	private JobseekerService jobseekerService;
+	private final JobseekerService jobseekerService;
 	 
 	@PostMapping("/createProfile/{userId}")
-	public ResponseEntity<Jobseeker>createJobseekerProfile(@RequestBody JobseekerDTO dto, Long userID){
+	public ResponseEntity<Jobseeker>createJobseekerProfile(@RequestBody JobseekerDTO dto,@PathVariable("userId") Long userID){
 		return ResponseEntity.ok(jobseekerService.createJobseekerProfile(userID, dto));
 	} 
 	
 	@GetMapping("/getProfile/{userId}")
-	public ResponseEntity<Jobseeker>getJobseekerProfile(@PathVariable Long userID){
+	public ResponseEntity<Jobseeker>getJobseekerProfile(@PathVariable("userId") Long userID){
 		return ResponseEntity.ok(jobseekerService.getJobseekerProfile(userID));
 	}
 }

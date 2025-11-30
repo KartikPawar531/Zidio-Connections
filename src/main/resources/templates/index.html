@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Zidio Connection</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="navbar">
+        <h1>Zidio Connection Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#apply-job">Apply for Job</a></li>
+                <li><a href="#admin-actions">Admin Actions</a></li>
+                <li><a href="#view-jobs">Job Listings</a></li>
+                <li><a href="#generate-invoice">Generate Invoice</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Login Form -->
+    <section id="login">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="loginResult"></p>
+    </section>
+
+    <!-- Apply for Job -->
+    <section id="apply-job">
+        <h2>Apply for Job</h2>
+        <form id="jobApplyForm">
+            <input type="text" id="jobseekerId" placeholder="Jobseeker ID" required>
+            <textarea id="applicationText" placeholder="Application Text" required></textarea>
+            <button type="submit">Apply</button>
+        </form>
+        <p id="applyResult"></p>
+    </section>
+
+    <!-- View Admin Actions -->
+    <section id="admin-actions">
+        <h2>Admin Actions</h2>
+        <button onclick="fetchAdminLogs()">View Admin Actions</button>
+        <div id="adminLogs"></div>
+    </section>
+
+    <!-- View Job Listings -->
+    <section id="view-jobs">
+        <h2>Job Listings</h2>
+        <button onclick="fetchJobListings()">View All Jobs</button>
+        <div id="jobList"></div>
+    </section>
+
+    <!-- Generate Invoice -->
+    <section id="generate-invoice">
+        <h2>Generate Invoice</h2>
+        <form id="invoiceForm">
+            <input type="text" id="paymentId" placeholder="Payment ID" required>
+            <button type="submit">Download Invoice</button>
+        </form>
+        <p id="invoiceResult"></p>
+    </section>
+
+    <script src="app.js"></script> <!-- JS to handle the logic -->
+</body>
+</html>

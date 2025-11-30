@@ -1,6 +1,5 @@
 package com.zidio_connection.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zidio_connection.DTO.JobseekerDTO;
@@ -13,8 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class JobseekerService {
 
-	@Autowired
-	private JobseekerRepository jobseekerRepo;
+	private final JobseekerRepository jobseekerRepo;
 
 	public Jobseeker createJobseekerProfile(Long userID, JobseekerDTO dto) {
 		Jobseeker jobseek = new Jobseeker();
@@ -31,6 +29,6 @@ public class JobseekerService {
 	}
 
 	public Jobseeker getJobseekerProfile(Long userId) {
-		return jobseekerRepo.findByuserId(userId).orElseThrow(() -> new RuntimeException("Jobseeker Not Found"));
+		return jobseekerRepo.findByUserId(userId).orElseThrow(() -> new RuntimeException("Jobseeker Not Found"));
 	}
 }

@@ -3,8 +3,6 @@ package com.zidio_connection.Service;
 import java.io.FileOutputStream;
 import java.time.LocalDateTime;
 import java.util.UUID;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,11 +18,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PaymentService {
 
-	@Autowired
-	private PaymentRepository paymentRepo;
+	private final PaymentRepository paymentRepo;
 
-	@Autowired
-	private GenerateInvoiceService invoiceService;
+	private final GenerateInvoiceService invoiceService;
 
 	public PaymentResponseDTO processPayment(PaymentRequestDTO dto) {
 		Payment pay = new Payment();

@@ -25,7 +25,7 @@ import com.zidio_connection.Entity.User;
 import com.zidio_connection.Entity.BlockListedToken;
 import com.zidio_connection.Repository.BlockListedTokenRepository;
 import com.zidio_connection.Repository.UserRepository;
-import com.zidio_connection.Security.JWTUtil;
+import com.zidio_connection.security.JWTUtil;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -35,23 +35,23 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthService {
 
-	@Autowired
-	private UserRepository userRepo;
+//	@Autowired
+	private final UserRepository userRepo;
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+//	@Autowired
+	private final PasswordEncoder passwordEncoder;
 
-	@Autowired
-	private AuthenticationManager authManager;
+//	@Autowired
+	private final  AuthenticationManager authManager;
 
-	@Autowired
-	private EmailService emailService;
+//	@Autowired
+	private final EmailService emailService;
 
-	@Autowired
-	private JWTUtil jwtToken;
+//	@Autowired
+	private final JWTUtil jwtToken;
 
-	@Autowired
-	private BlockListedTokenRepository blockListedRepo;
+//	@Autowired
+	private final BlockListedTokenRepository blockListedRepo;
 
 	public User register(UserDTO dto) {
 		User user = new User();
@@ -78,16 +78,17 @@ public class AuthService {
 	}
 
 	public AuthResponseDTO login(LoginRequestDTO dto) {
-		Authentication authentication = authManager
-				.authenticate(new UsernamePasswordAuthenticationToken(dto.getUserEmail(), dto.getPassword()));
 
-//		UserDetails user = (UserDetails)authentication.getPrincipal();
-//		String token = jwtToken.generateToken(user.getUsername(), user.getPassword());
-//		return new AuthResponseDTO(token,"Token got creted");
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		String token = jwtToken.generateToken(authentication);
-		return new AuthResponseDTO(token, "Token created successfully");
-	}
+        Authentication authentication = authManager.authenticate(
+                new UsernamePasswordAuthenticationToken(dto.getUserEmail(), dto.getPassword())
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String token = jwtToken.generateToken(authentication);
+
+        return new AuthResponseDTO(token, "Token created successfully");
+    }
 
 	public String forgetPassword(ForgotPasswordRequestDTO request) {
 		Optional<User> userOpt = userRepo.findByUserEmail(request.getUserEmail());

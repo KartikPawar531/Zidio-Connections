@@ -19,7 +19,7 @@ public class Course {
 	private String courseTitle;
 	private String courseDescription;
 	private String courseCatogory;
-	private String adminId;
+	private Long adminId;
 	private LocalDateTime createdAt;
 	private boolean active;
 }

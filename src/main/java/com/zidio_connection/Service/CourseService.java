@@ -17,8 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CourseService {
 
-	@Autowired
-	private CourseRepository courseRepo;
+	private final CourseRepository courseRepo;
 
 	public CourseDTO addCourse(CourseDTO dto) 
 	{
